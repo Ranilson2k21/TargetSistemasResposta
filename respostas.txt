@@ -1,0 +1,137 @@
+ 1º Questão
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-soma',
+  templateUrl: './soma.component.html',
+  styleUrls: ['./soma.component.css']
+})
+export class SomaComponent {
+  indice: number = 13;
+  soma: number = 0;
+  k: number = 0;
+
+  calcularSoma(): void {
+    while (this.k < this.indice) {
+      this.k = this.k + 1;
+      this.soma = this.soma + this.k;
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+2º Questão "Python"
+
+# Função para calcular a sequência de Fibonacci até o número informado
+
+def fibonacci(num):
+    fib_sequence = [0, 1]  # Sequência inicial
+    while fib_sequence[-1] < num:
+        # Adiciona o próximo número na sequência (soma dos dois anteriores)
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
+    return fib_sequence
+
+# Função para verificar se o número pertence à sequência
+def pertence_fibonacci(num):
+    fib_sequence = fibonacci(num)
+    if num in fib_sequence:
+        return True
+    else:
+        return False
+
+# Entrada do número
+numero = int(input("Informe um número para verificar se pertence à sequência de Fibonacci: "))
+
+# Verifica se o número pertence à sequência
+if pertence_fibonacci(numero):
+    print(f"O número {numero} pertence à sequência de Fibonacci.")
+else:
+    print(f"O número {numero} NÃO pertence à sequência de Fibonacci.")
+
+////////////////////////////////////////////////////////////////////////////////////////////
+3º Questão 
+
+# Função para calcular o menor e maior faturamento, além do número de dias superiores à média
+def analisar_faturamento(vetor):
+    # Filtrando os valores não nulos para o cálculo da média
+    faturamento_diario = [valor for valor in vetor if valor > 0]
+    
+    # Cálculo do menor e maior valor de faturamento
+    menor_faturamento = min(faturamento_diario)
+    maior_faturamento = max(faturamento_diario)
+    
+    # Cálculo da média mensal
+    media_mensal = sum(faturamento_diario) / len(faturamento_diario)
+    
+    # Contando os dias com faturamento superior à média mensal
+    dias_acima_media = sum(1 for valor in faturamento_diario if valor > media_mensal)
+    
+    return menor_faturamento, maior_faturamento, dias_acima_media
+
+# Exemplo de vetor com faturamento diário (valores podem ser 0 ou positivos)
+faturamento_diario = [200, 300, 150, 400, 500, 0, 600, 700, 250, 300, 100, 450, 0, 350]
+
+# Chama a função para realizar os cálculos
+menor, maior, dias_acima_media = analisar_faturamento(faturamento_diario)
+
+# Exibe os resultados
+print(f"Menor valor de faturamento: R$ {menor}")
+print(f"Maior valor de faturamento: R$ {maior}")
+print(f"Número de dias com faturamento superior à média mensal: {dias_acima_media}")
+
+
+4º Questão Python
+
+# Faturamento por estado
+faturamento_estados = {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outro": 19849.53
+}
+
+# Função para calcular o percentual de cada estado
+def calcular_percentual(faturamento_estados):
+    total_faturamento = sum(faturamento_estados.values())  # Total de faturamento
+    percentuais = {}
+    
+    for estado, faturamento in faturamento_estados.items():
+        percentual = (faturamento / total_faturamento) * 100  # Cálculo do percentual
+        percentuais[estado] = percentual
+    
+    return percentuais, total_faturamento
+
+# Chama a função para calcular os percentuais
+percentuais, total_faturamento = calcular_percentual(faturamento_estados)
+
+# Exibe o resultado
+print(f"Total de faturamento: R$ {total_faturamento:.2f}")
+for estado, percentual in percentuais.items():
+    print(f"{estado}: {percentual:.2f}%")
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+5º Questão - Python
+
+# Função para inverter a string manualmente
+def inverter_string(s):
+    string_invertida = ""  # Variável para armazenar a string invertida
+    
+    # Loop para percorrer a string original de trás para frente
+    for i in range(len(s) - 1, -1, -1):
+        string_invertida += s[i]  # Adiciona cada caractere da string invertida
+    
+    return string_invertida
+
+# Entrada de dados: pode ser definida no código ou informada pelo usuário
+entrada = input("Digite uma string para inverter: ")
+
+# Chama a função para inverter a string
+resultado = inverter_string(entrada)
+
+# Exibe o resultado
+print(f"String invertida: {resultado}")
